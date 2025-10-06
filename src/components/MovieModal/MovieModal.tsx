@@ -1,6 +1,7 @@
 import css from '../MovieModal/MovieModal.module.css';
 import { type Movie } from '../../types/movie';
 import { type MouseEvent, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface MovieModalProps {
   movie: Movie | null;
@@ -24,7 +25,7 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
     if (event.target === event.currentTarget) onClose();
   };
   if (movie !== null)
-    return (
+    return createPortal(
       <div
         className={css.backdrop}
         role="dialog"
@@ -55,6 +56,7 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
             </p>
           </div>
         </div>
-      </div>
+      </div>,
+      document.body
     );
 }
