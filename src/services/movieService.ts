@@ -32,7 +32,6 @@ export default async function fetchMovies(newInput: string):Promise<Movie[]>{
       },
 	 });
 	
-	// console.log(res.data.results);
-	 
+ 
 	return res.data.results;
   };
